@@ -1,5 +1,6 @@
-import coverImage from '../images/about-us-page-image.png';
-import Footer from './Footer';
+import coverImage from '../assets/images/about-us-page-image.png';
+import Footer from '../components/Footer';
+import { Link } from 'react-router-dom';
 
 export default function About() {
   return (
@@ -31,9 +32,9 @@ export default function About() {
             Your destination is waiting.{' '}
             <span className='inline-block'>Your van is ready.</span>
           </p>
-          <button className='px-6 py-3 bg-gray-900 text-gray-100 rounded-xl font-bold'>
+          <Link className='px-6 py-3 bg-gray-900 text-gray-100 rounded-xl font-bold'>
             Explore our vans
-          </button>
+          </Link>
         </div>
       </div>
       <Footer />

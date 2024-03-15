@@ -1,5 +1,6 @@
-import homePageImage from '../images/home-page-image.png';
-import Footer from './Footer';
+import homePageImage from '../assets/images/home-page-image.png';
+import Footer from '../components/Footer';
+import { Link } from 'react-router-dom';
 
 export default function Home() {
   return (
@@ -16,9 +17,9 @@ export default function Home() {
             Add adventure to your life by joining the #vanlife movement. Rent
             the perfect van to make your perfect road trip.
           </p>
-          <button className='py-3 bg-orange-400 rounded-lg font-bold'>
+          <Link className='py-3 bg-orange-400 rounded-lg font-bold text-center'>
             Find your van
-          </button>
+          </Link>
         </div>
         <Footer />
       </div>
