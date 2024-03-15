@@ -1,11 +1,18 @@
 import { useEffect, useState } from 'react';
+import Card from '../components/Card';
 
 export default function Vans() {
+  let [vanData, setVanData] = useState([]);
+
   useEffect(() => {
     fetch('/api/vans')
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((data) => setVanData(data.vans));
   }, []);
 
-  return <h1>Vans page goes here 🚐</h1>;
+  return (
+    <div>
+      <Card />
+    </div>
+  );
 }
