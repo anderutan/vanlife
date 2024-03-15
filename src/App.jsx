@@ -20,9 +20,6 @@ function App() {
         <Route path='/about' element={<About />} />
         {/* <Route path='/vans' element={<Vans/>}/> */}
       </Routes>
-      <footer className='w-full h-1/12 absolute bottom-0 text-center text-xs bg-neutral-800 text-neutral-100 py-3'>
-        Ⓒ 2024 #VANLIFE
-      </footer>
     </BrowserRouter>
   );
 }
