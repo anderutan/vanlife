@@ -1,5 +1,3 @@
-import Footer from './Footer';
-
 export default function Home() {
   return (
     <div>
@@ -9,7 +7,6 @@ export default function Home() {
         perfect van to make your perfect road trip.
       </p>
       <button>Find your van</button>
-      <Footer />
     </div>
   );
 }
