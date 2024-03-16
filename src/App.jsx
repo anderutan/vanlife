@@ -7,7 +7,7 @@ import logo from './assets/images/logo.png';
 function App() {
   return (
     <BrowserRouter>
-      <header className='flex justify-between items-center p-6 bg-orange-50 w-[548px]'>
+      <header className='flex justify-between items-center p-6 bg-orange-50'>
         <Link to='/'>
           <img src={logo} alt='' className='h-4' />
         </Link>
