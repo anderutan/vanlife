@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 export default function About() {
   return (
-    <div className='bg-orange-50'>
+    <div className='bg-orange-50 w-[548px]'>
       <div>
         <img
           src={coverImage}
