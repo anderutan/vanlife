@@ -1,14 +1,7 @@
+import Tag from './Tag';
+
 export default function Card({ van }) {
   const { imageUrl, name, price, type } = van;
-  const tagBaseCSS =
-    'text-sm px-4 py-1 capitalize rounded inline-block -mt-4 text-white';
-  const tagColor =
-    type === 'simple'
-      ? 'bg-orange-600'
-      : type === 'rugged'
-      ? 'bg-teal-800'
-      : 'bg-neutral-900';
-  const tagCSS = tagBaseCSS + ' ' + tagColor;
 
   return (
     <div className='inline-block font-bold w-56'>
@@ -24,7 +17,7 @@ export default function Card({ van }) {
           <span className='text-xs block text-right -mt-2'>/day</span>
         </p>
       </div>
-      <p className={tagCSS}>{type}</p>
+      <Tag type={type} />
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import Card from '../components/Card';
 import Footer from '../components/Footer';
+import { Link } from 'react-router-dom';
 
 export default function Vans() {
   let [vanData, setVanData] = useState([]);
@@ -34,7 +35,9 @@ export default function Vans() {
         </div>
         <div className='flex flex-wrap gap-10 justify-center'>
           {vanData.map((van) => (
-            <Card van={van} key={van.id} />
+            <Link to={`/vans/${van.id}`} key={van.id}>
+              <Card van={van} key={van.id} />
+            </Link>
           ))}
         </div>
       </div>
