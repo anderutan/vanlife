@@ -41,7 +41,6 @@ export default function Vans() {
           ))}
         </div>
       </div>
-      <Footer />
     </div>
   );
 }

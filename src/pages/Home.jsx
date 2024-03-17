@@ -24,7 +24,6 @@ export default function Home() {
             Find your van
           </Link>
         </div>
-        <Footer />
       </div>
     </>
   );

@@ -35,7 +35,6 @@ export default function VanDetails() {
               Rent this van
             </button>
           </div>
-          <Footer />
         </div>
       ) : (
         <h2>Loading...</h2>
