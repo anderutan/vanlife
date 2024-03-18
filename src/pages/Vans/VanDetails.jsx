@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useLocation } from 'react-router-dom';
 import Tag from '../../components/Tag';
 import leftArrow from '../../assets/images/left-arrow.svg';
 
 export default function VanDetails() {
   const params = useParams();
   const [van, setVan] = useState(null);
+  const location = useLocation();
+  console.log(location.state.search);
 
   useEffect(() => {
     fetch(`/api/vans/${params.id}`)
@@ -13,14 +15,13 @@ export default function VanDetails() {
       .then((data) => setVan(data.vans));
   }, [params.id]);
 
-  console.log(van);
   return (
     <>
       {van ? (
         <div className='h-full bg-orange-50 pb-20 '>
           <div className='p-7 flex flex-col items-start'>
             <Link
-              to='..'
+              to={location.state.search ? `..?${location.state.search}` : '..'}
               relative='path'
               className='flex items-center gap-2 mb-10'
             >

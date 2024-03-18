@@ -16,7 +16,7 @@ export default function HostVans() {
       <h1 className='px-6 pt-10 pb-4 text-3xl font-bold'>Your listed vans</h1>
       <div className='px-6 py-4 flex flex-col gap-4'>
         {vanData.map((van) => (
-          <Link to={`/host/vans/${van.id}`} key={van.id}>
+          <Link to={van.id} key={van.id}>
             <HostVanCard vanList={van} />
           </Link>
         ))}

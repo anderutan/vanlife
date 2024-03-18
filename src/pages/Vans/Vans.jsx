@@ -20,8 +20,8 @@ export default function Vans() {
     : vanData;
 
   const vanElements = displayVans.map((van) => (
-    <Link to={`/vans/${van.id}`} key={van.id}>
-      <Card van={van} key={van.id} />
+    <Link to={van.id} key={van.id} state={{ search: searchParams.toString() }}>
+      <Card van={van} />
     </Link>
   ));
 
