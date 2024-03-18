@@ -6,6 +6,8 @@ export default function Vans() {
   let [vanData, setVanData] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
   const typeFilter = searchParams.get('type');
+  const defaultBtnStyle =
+    'font-medium px-6 py-2 bg-orange-100 rounded-md hover:text-white';
 
   useEffect(() => {
     fetch('/api/vans')
@@ -23,35 +25,60 @@ export default function Vans() {
     </Link>
   ));
 
+  function handleFilterChange(key, value) {
+    setSearchParams((prevParams) => {
+      if (value === null) {
+        prevParams.delete(key);
+      } else {
+        prevParams.set(key, value);
+      }
+      return prevParams;
+    });
+  }
+
   return (
     <div className=' h-full md:h-screen pb-20 bg-orange-50'>
       <div className='p-7'>
         <h1 className='text-3xl font-bold py-5'>Explore our van options</h1>
         <div className='pb-12 flex justify-between items-center'>
           <button
-            onClick={() => setSearchParams({ type: 'simple' })}
-            className='font-medium px-6 py-2 bg-orange-100 rounded-md'
+            onClick={() => handleFilterChange('type', 'simple')}
+            className={
+              typeFilter === 'simple'
+                ? `${defaultBtnStyle} bg-orange-500 text-white`
+                : `${defaultBtnStyle} hover:bg-orange-500`
+            }
           >
             Simple
           </button>
           <button
-            onClick={() => setSearchParams({ type: 'luxury' })}
-            className='font-medium px-6 py-2 bg-orange-100 rounded-md'
+            onClick={() => handleFilterChange('type', 'luxury')}
+            className={
+              typeFilter === 'luxury'
+                ? `${defaultBtnStyle} bg-black text-white`
+                : `${defaultBtnStyle} hover:bg-black`
+            }
           >
             Luxury
           </button>
           <button
-            onClick={() => setSearchParams({ type: 'rugged' })}
-            className='font-medium px-6 py-2 bg-orange-100 rounded-md'
+            onClick={() => handleFilterChange('type', 'rugged')}
+            className={
+              typeFilter === 'rugged'
+                ? `${defaultBtnStyle} bg-teal-800 text-white`
+                : `${defaultBtnStyle} hover:bg-teal-800`
+            }
           >
             Rugged
           </button>
-          <button
-            onClick={() => setSearchParams({})}
-            className='font-medium underline underline-offset-4 decoration-1 cursor-pointer'
-          >
-            Clear filters
-          </button>
+          {typeFilter ? (
+            <button
+              onClick={() => handleFilterChange('type', null)}
+              className='font-medium underline underline-offset-4 decoration-1 cursor-pointer'
+            >
+              Clear filters
+            </button>
+          ) : null}
         </div>
         <div className='flex flex-wrap gap-10 justify-center'>
           {vanElements}
