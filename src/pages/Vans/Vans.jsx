@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
-import Card from '../components/Card';
-import Footer from '../components/Footer';
+import Card from '../../components/Card';
 import { Link } from 'react-router-dom';
 
 export default function Vans() {
@@ -13,7 +12,7 @@ export default function Vans() {
   }, []);
 
   return (
-    <div className='relative h-full md:h-screen pb-20 bg-orange-50'>
+    <div className=' h-full md:h-screen pb-20 bg-orange-50'>
       <div className='p-7'>
         <h1 className='text-3xl font-bold py-5'>Explore our van options</h1>
         <div className='pb-12 flex justify-between items-center'>
