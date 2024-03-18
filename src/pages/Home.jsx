@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <>
       <div
-        className='h-screen bg-cover bg-center relative text-white'
+        className='h-screen bg-cover bg-center text-white'
         style={{ backgroundImage: `url(${homePageImage})` }}
       >
         <div className='w-full h-full flex flex-col justify-center backdrop-brightness-50 px-6'>
