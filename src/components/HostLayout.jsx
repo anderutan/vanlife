@@ -10,13 +10,19 @@ export default function HostLayout() {
           to='/host'
           className={({ isActive }) => (isActive ? activeStyle : hoverStyle)}
         >
-          Host
+          Dashboard
         </NavLink>
         <NavLink
           to='/host/income'
           className={({ isActive }) => (isActive ? activeStyle : hoverStyle)}
         >
           Income
+        </NavLink>
+        <NavLink
+          to='/host/vans'
+          className={({ isActive }) => (isActive ? activeStyle : hoverStyle)}
+        >
+          Vans
         </NavLink>
         <NavLink
           to='/host/reviews'
