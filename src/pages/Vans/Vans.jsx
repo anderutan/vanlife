@@ -43,31 +43,29 @@ export default function Vans() {
         <div className='pb-12 flex justify-between items-center'>
           <button
             onClick={() => handleFilterChange('type', 'simple')}
-            className={
+            className={`${defaultBtnStyle} ${
               typeFilter === 'simple'
-                ? `${defaultBtnStyle} bg-orange-500 text-white`
-                : `${defaultBtnStyle} hover:bg-orange-500`
-            }
+                ? 'bg-orange-500 text-white'
+                : 'hover:bg-orange-500'
+            }`}
           >
             Simple
           </button>
           <button
             onClick={() => handleFilterChange('type', 'luxury')}
-            className={
-              typeFilter === 'luxury'
-                ? `${defaultBtnStyle} bg-black text-white`
-                : `${defaultBtnStyle} hover:bg-black`
-            }
+            className={`${defaultBtnStyle} ${
+              typeFilter === 'luxury' ? 'bg-black text-white' : 'hover:bg-black'
+            }`}
           >
             Luxury
           </button>
           <button
             onClick={() => handleFilterChange('type', 'rugged')}
-            className={
+            className={`${defaultBtnStyle} ${
               typeFilter === 'rugged'
-                ? `${defaultBtnStyle} bg-teal-800 text-white`
-                : `${defaultBtnStyle} hover:bg-teal-800`
-            }
+                ? 'bg-teal-800 text-white'
+                : 'hover:bg-teal-800'
+            }`}
           >
             Rugged
           </button>
