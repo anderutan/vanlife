@@ -7,16 +7,16 @@ export default function HostLayout() {
   return (
     <div className='h-full bg-orange-50'>
       <nav className='flex p-3 gap-3'>
-        <NavLink end to='/host' className={classLink}>
+        <NavLink end to='.' className={classLink}>
           Dashboard
         </NavLink>
-        <NavLink to='/host/income' className={classLink}>
+        <NavLink to='income' className={classLink}>
           Income
         </NavLink>
-        <NavLink to='/host/vans' className={classLink}>
+        <NavLink to='vans' className={classLink}>
           Vans
         </NavLink>
-        <NavLink to='/host/reviews' className={classLink}>
+        <NavLink to='reviews' className={classLink}>
           Reviews
         </NavLink>
       </nav>

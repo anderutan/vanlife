@@ -19,7 +19,11 @@ export default function VanDetails() {
       {van ? (
         <div className='h-full bg-orange-50 pb-20 '>
           <div className='p-7 flex flex-col items-start'>
-            <Link to='/vans' className='flex items-center gap-2 mb-10'>
+            <Link
+              to='..'
+              relative='path'
+              className='flex items-center gap-2 mb-10'
+            >
               <img src={leftArrow} alt='' className='h-4 w-4' />
               <p className='underline underline-offset-2'>Back to all vans</p>
             </Link>

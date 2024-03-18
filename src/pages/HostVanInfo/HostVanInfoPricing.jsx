@@ -1,15 +1,7 @@
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useOutletContext } from 'react-router-dom';
 
 export default function HostVanInfoPricing() {
-  const { id } = useParams();
-  const [van, setVan] = useState(null);
-
-  useEffect(() => {
-    fetch(`/api/host/vans/${id}`)
-      .then((res) => res.json())
-      .then((data) => setVan(data.vans));
-  }, [id]);
+  const [van, setVan] = useOutletContext();
 
   return (
     <div className='pb-3'>
