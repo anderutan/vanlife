@@ -28,30 +28,30 @@ export default function Vans() {
       <div className='p-7'>
         <h1 className='text-3xl font-bold py-5'>Explore our van options</h1>
         <div className='pb-12 flex justify-between items-center'>
-          <Link
-            to='?type=simple'
+          <button
+            onClick={() => setSearchParams({ type: 'simple' })}
             className='font-medium px-6 py-2 bg-orange-100 rounded-md'
           >
             Simple
-          </Link>
-          <Link
-            to='?type=luxury'
+          </button>
+          <button
+            onClick={() => setSearchParams({ type: 'luxury' })}
             className='font-medium px-6 py-2 bg-orange-100 rounded-md'
           >
             Luxury
-          </Link>
-          <Link
-            to='?type=rugged'
+          </button>
+          <button
+            onClick={() => setSearchParams({ type: 'rugged' })}
             className='font-medium px-6 py-2 bg-orange-100 rounded-md'
           >
             Rugged
-          </Link>
-          <a
-            onClick={() => setSearchParams('')}
+          </button>
+          <button
+            onClick={() => setSearchParams({})}
             className='font-medium underline underline-offset-4 decoration-1 cursor-pointer'
           >
             Clear filters
-          </a>
+          </button>
         </div>
         <div className='flex flex-wrap gap-10 justify-center'>
           {vanElements}
