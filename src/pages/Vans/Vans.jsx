@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
 import Card from '../../components/Card';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 
 export default function Vans() {
   let [vanData, setVanData] = useState([]);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const typeFilter = searchParams.get('type');
 
   useEffect(() => {
     fetch('/api/vans')
@@ -16,13 +18,25 @@ export default function Vans() {
       <div className='p-7'>
         <h1 className='text-3xl font-bold py-5'>Explore our van options</h1>
         <div className='pb-12 flex justify-between items-center'>
-          <a href='' className='font-medium px-6 py-2 bg-orange-100 rounded-md'>
+          <a
+            href=''
+            onClick={() => setSearchParams('type=simple')}
+            className='font-medium px-6 py-2 bg-orange-100 rounded-md'
+          >
             Simple
           </a>
-          <a href='' className='font-medium px-6 py-2 bg-orange-100 rounded-md'>
+          <a
+            href=''
+            onClick={() => setSearchParams('type=luxury')}
+            className='font-medium px-6 py-2 bg-orange-100 rounded-md'
+          >
             Luxury
           </a>
-          <a href='' className='font-medium px-6 py-2 bg-orange-100 rounded-md'>
+          <a
+            href=''
+            onClick={() => setSearchParams('type=rugged')}
+            className='font-medium px-6 py-2 bg-orange-100 rounded-md'
+          >
             Rugged
           </a>
           <a
@@ -33,11 +47,13 @@ export default function Vans() {
           </a>
         </div>
         <div className='flex flex-wrap gap-10 justify-center'>
-          {vanData.map((van) => (
-            <Link to={`/vans/${van.id}`} key={van.id}>
-              <Card van={van} key={van.id} />
-            </Link>
-          ))}
+          {vanData
+            .filter((van) => van.type === typeFilter)
+            .map((van) => (
+              <Link to={`/vans/${van.id}`} key={van.id}>
+                <Card van={van} key={van.id} />
+              </Link>
+            ))}
         </div>
       </div>
     </div>
