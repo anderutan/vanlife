@@ -15,13 +15,15 @@ export default function VanDetails() {
       .then((data) => setVan(data.vans));
   }, [params.id]);
 
+  const search = location.state?.search || '';
+
   return (
     <>
       {van ? (
         <div className='h-full bg-orange-50 pb-20 '>
           <div className='p-7 flex flex-col items-start'>
             <Link
-              to={location.state.search ? `..?${location.state.search}` : '..'}
+              to={`..?${search}`}
               relative='path'
               className='flex items-center gap-2 mb-10'
             >
