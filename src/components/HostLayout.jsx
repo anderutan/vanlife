@@ -3,7 +3,7 @@ export default function HostLayout() {
   const activeStyle = 'font-bold underline';
   const hoverStyle = 'hover:font-bold hover:underline';
   return (
-    <div className='h-full'>
+    <div className='h-full bg-orange-50'>
       <nav className='flex p-3 gap-3'>
         <NavLink
           end
