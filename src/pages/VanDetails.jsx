@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import Tag from '../../components/Tag';
-import leftArrow from '../../assets/images/left-arrow.svg';
+import Tag from '../components/Tag';
+import leftArrow from '../assets/images/left-arrow.svg';
+import Footer from '../components/Footer';
 
 export default function VanDetails() {
   const params = useParams();
@@ -16,7 +17,7 @@ export default function VanDetails() {
   return (
     <>
       {van ? (
-        <div className='h-full bg-orange-50 pb-20 '>
+        <div className='h-full bg-orange-50 relative pb-20 '>
           <div className='p-7 flex flex-col items-start'>
             <Link to='/vans' className='flex items-center gap-2 mb-10'>
               <img src={leftArrow} alt='' className='h-4 w-4' />

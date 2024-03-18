@@ -4,7 +4,7 @@ import Footer from './Footer';
 
 export default function Layout() {
   return (
-    <div className='h-full'>
+    <div className='h-full relative'>
       <Header />
       <Outlet />
       <Footer />
