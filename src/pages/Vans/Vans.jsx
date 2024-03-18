@@ -13,47 +13,48 @@ export default function Vans() {
       .then((data) => setVanData(data.vans));
   }, []);
 
+  const displayVans = typeFilter
+    ? vanData.filter((van) => van.type === typeFilter)
+    : vanData;
+
+  const vanElements = displayVans.map((van) => (
+    <Link to={`/vans/${van.id}`} key={van.id}>
+      <Card van={van} key={van.id} />
+    </Link>
+  ));
+
   return (
     <div className=' h-full md:h-screen pb-20 bg-orange-50'>
       <div className='p-7'>
         <h1 className='text-3xl font-bold py-5'>Explore our van options</h1>
         <div className='pb-12 flex justify-between items-center'>
-          <a
-            href=''
-            onClick={() => setSearchParams('type=simple')}
+          <Link
+            to='?type=simple'
             className='font-medium px-6 py-2 bg-orange-100 rounded-md'
           >
             Simple
-          </a>
-          <a
-            href=''
-            onClick={() => setSearchParams('type=luxury')}
+          </Link>
+          <Link
+            to='?type=luxury'
             className='font-medium px-6 py-2 bg-orange-100 rounded-md'
           >
             Luxury
-          </a>
-          <a
-            href=''
-            onClick={() => setSearchParams('type=rugged')}
+          </Link>
+          <Link
+            to='?type=rugged'
             className='font-medium px-6 py-2 bg-orange-100 rounded-md'
           >
             Rugged
-          </a>
+          </Link>
           <a
-            href=''
-            className='font-medium underline underline-offset-4 decoration-1'
+            onClick={() => setSearchParams('')}
+            className='font-medium underline underline-offset-4 decoration-1 cursor-pointer'
           >
             Clear filters
           </a>
         </div>
         <div className='flex flex-wrap gap-10 justify-center'>
-          {vanData
-            .filter((van) => van.type === typeFilter)
-            .map((van) => (
-              <Link to={`/vans/${van.id}`} key={van.id}>
-                <Card van={van} key={van.id} />
-              </Link>
-            ))}
+          {vanElements}
         </div>
       </div>
     </div>
