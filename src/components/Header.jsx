@@ -1,4 +1,5 @@
 import logo from '../assets/images/logo.png';
+import profile from '../assets/images/profile.svg';
 import { NavLink } from 'react-router-dom';
 
 export default function Header() {
@@ -11,7 +12,7 @@ export default function Header() {
       <NavLink to='/'>
         <img src={logo} alt='' className='h-4' />
       </NavLink>
-      <nav className='flex gap-3 '>
+      <nav className='flex gap-3 items-center'>
         <NavLink to='/host' className={classLink}>
           Host
         </NavLink>
@@ -20,6 +21,9 @@ export default function Header() {
         </NavLink>
         <NavLink to='/vans' className={classLink}>
           Vans
+        </NavLink>
+        <NavLink to='/login'>
+          <img src={profile} alt='Profile Icon' className='h-5 w-5' />
         </NavLink>
       </nav>
     </header>
