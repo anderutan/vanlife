@@ -7,7 +7,7 @@ export default function VanDetails() {
   const params = useParams();
   const [van, setVan] = useState(null);
   const location = useLocation();
-  console.log(location.state.search);
+  console.log(location);
 
   useEffect(() => {
     fetch(`/api/vans/${params.id}`)
@@ -28,7 +28,9 @@ export default function VanDetails() {
               className='flex items-center gap-2 mb-10'
             >
               <img src={leftArrow} alt='' className='h-4 w-4' />
-              <p className='underline underline-offset-2'>Back to all vans</p>
+              <p className='underline underline-offset-2'>
+                Back to {search.split('=')[1] || 'all'} vans
+              </p>
             </Link>
             <img src={van.imageUrl} alt={van.name} className='mb-12  ' />
             <Tag type={van.type} />
