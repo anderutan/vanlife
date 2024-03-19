@@ -1,19 +1,43 @@
 import { useEffect, useState } from 'react';
 import Card from '../../components/Card';
 import { Link, useSearchParams } from 'react-router-dom';
+import { getVans } from '../../api';
 
 export default function Vans() {
   let [vanData, setVanData] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
   const typeFilter = searchParams.get('type');
   const defaultBtnStyle =
     'font-medium px-6 py-2 bg-orange-100 rounded-md hover:text-white';
 
   useEffect(() => {
-    fetch('/api/vans')
-      .then((res) => res.json())
-      .then((data) => setVanData(data.vans));
+    async function loadVan() {
+      setLoading(true);
+      try {
+        const data = await getVans();
+        setVanData(data);
+      } catch (err) {
+        setError(err);
+      } finally {
+        setLoading(false);
+      }
+    }
+    loadVan();
   }, []);
+
+  if (loading) {
+    return <h1 className='text-2xl font-bold p-10 bg-orange-50'>Loading...</h1>;
+  }
+
+  if (error) {
+    return (
+      <h1 className='text-2xl font-bold p-10 bg-orange-50'>
+        There was an error: {error.message}
+      </h1>
+    );
+  }
 
   const displayVans = typeFilter
     ? vanData.filter((van) => van.type === typeFilter)
