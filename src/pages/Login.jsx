@@ -1,7 +1,10 @@
 import { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
 export default function Login() {
   const [formData, setFormData] = useState({ email: '', password: '' });
+  const location = useLocation();
+  console.log(location);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -15,6 +18,11 @@ export default function Login() {
 
   return (
     <div className='bg-orange-50 h-screen flex flex-col p-5 pt-10 '>
+      {location.state?.message && (
+        <p className='text-center pb-5 text-red-500'>
+          {location.state.message}
+        </p>
+      )}
       <h1 className='pb-10 text-center text-2xl font-bold'>
         Sign in to your account
       </h1>
@@ -28,7 +36,7 @@ export default function Login() {
           className='rounded-t-lg p-3 border-2'
         />
         <input
-          type='text'
+          type='password'
           name='password'
           placeholder='Password'
           value={formData.password}
