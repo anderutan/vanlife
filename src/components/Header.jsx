@@ -7,6 +7,10 @@ export default function Header() {
   const hoverStyle = 'hover:font-bold hover:underline';
   const classLink = ({ isActive }) => (isActive ? activeStyle : hoverStyle);
 
+  function fakeLogOut() {
+    localStorage.removeItem('loggedin');
+  }
+
   return (
     <header className='flex justify-between items-center p-6 bg-orange-50'>
       <NavLink to='/'>
@@ -25,6 +29,7 @@ export default function Header() {
         <NavLink to='/login'>
           <img src={profile} alt='Profile Icon' className='h-5 w-5' />
         </NavLink>
+        <button onClick={fakeLogOut}>X</button>
       </nav>
     </header>
   );

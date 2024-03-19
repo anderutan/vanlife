@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { loginUser } from '../api';
 
 export default function Login() {
@@ -7,6 +7,7 @@ export default function Login() {
   const [status, setStatus] = useState('idle');
   const [error, setError] = useState(null);
   const location = useLocation();
+  const navigation = useNavigate();
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -15,6 +16,8 @@ export default function Login() {
       .then((data) => {
         console.log(data);
         setError(null);
+        localStorage.setItem('loggedin', true);
+        navigation('/host', { replace: true });
       })
       .catch((err) => {
         setError(err);
@@ -58,7 +61,6 @@ export default function Login() {
           className='rounded-b-lg p-3 border-x-2 border-b-2 mb-5'
         />
         <button
-          type='submit'
           className='py-3 text-lg text-white font-bold bg-orange-400 rounded-md disabled:opacity-50'
           disabled={status === 'submitting'}
         >
