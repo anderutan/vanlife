@@ -2,16 +2,36 @@ import { useState, useEffect } from 'react';
 import { Link, NavLink, Outlet, useParams } from 'react-router-dom';
 import Tag from '../../components/Tag';
 import leftArrow from '../../assets/images/left-arrow.svg';
+import { getHostVans } from '../../api';
 
 export default function HostVanDetails() {
-  const { id } = useParams();
   const [van, setVan] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const { id } = useParams();
 
   useEffect(() => {
-    fetch(`/api/host/vans/${id}`)
-      .then((res) => res.json())
-      .then((data) => setVan(data.vans));
+    async function loadVans() {
+      setLoading(true);
+      try {
+        const data = await getHostVans(id);
+        setVan(data);
+      } catch (err) {
+        setError(err);
+      } finally {
+        setLoading(false);
+      }
+    }
+    loadVans();
   }, [id]);
+
+  if (loading) {
+    return <h1>Loading...</h1>;
+  }
+
+  if (error) {
+    return <h1>There was an error: {error.message}</h1>;
+  }
 
   const activeStyle = 'font-bold underline';
   const hoverStyle = 'hover:font-bold hover:underline';

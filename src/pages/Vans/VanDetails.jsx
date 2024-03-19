@@ -2,17 +2,37 @@ import { useEffect, useState } from 'react';
 import { useParams, Link, useLocation } from 'react-router-dom';
 import Tag from '../../components/Tag';
 import leftArrow from '../../assets/images/left-arrow.svg';
+import { getVans } from '../../api';
 
 export default function VanDetails() {
-  const params = useParams();
   const [van, setVan] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const { id } = useParams();
   const location = useLocation();
 
   useEffect(() => {
-    fetch(`/api/vans/${params.id}`)
-      .then((res) => res.json())
-      .then((data) => setVan(data.vans));
-  }, [params.id]);
+    async function loadVans() {
+      setLoading(true);
+      try {
+        const data = await getVans(id);
+        setVan(data);
+      } catch (err) {
+        setError(err);
+      } finally {
+        setLoading(false);
+      }
+    }
+    loadVans();
+  }, [id]);
+
+  if (loading) {
+    return <h1>Loading...</h1>;
+  }
+
+  if (error) {
+    return <h1>There was an error: {error.message}</h1>;
+  }
 
   const search = location.state?.search || '';
 
