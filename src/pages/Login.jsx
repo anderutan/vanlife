@@ -17,7 +17,7 @@ export default function Login() {
         console.log(data);
         setError(null);
         localStorage.setItem('loggedin', true);
-        navigation('/host', { replace: true });
+        navigation(location.state?.from || '/host', { replace: true });
       })
       .catch((err) => {
         setError(err);
