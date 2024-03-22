@@ -6,7 +6,7 @@ export default function HostLayout() {
 
   return (
     <div className='h-full bg-orange-50'>
-      <nav className='flex p-3 gap-3'>
+      <nav className='flex p-3 gap-3 pb-6'>
         <NavLink end to='.' className={classLink}>
           Dashboard
         </NavLink>
