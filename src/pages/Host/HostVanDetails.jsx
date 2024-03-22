@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, NavLink, Outlet, useParams } from 'react-router-dom';
 import Tag from '../../components/Tag';
 import leftArrow from '../../assets/images/left-arrow.svg';
-import { getHostVans } from '../../api';
+import { getVan } from '../../api';
 
 export default function HostVanDetails() {
   const [van, setVan] = useState(null);
@@ -14,7 +14,7 @@ export default function HostVanDetails() {
     async function loadVans() {
       setLoading(true);
       try {
-        const data = await getHostVans(id);
+        const data = await getVan(id);
         setVan(data);
       } catch (err) {
         setError(err);
